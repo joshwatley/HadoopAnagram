@@ -52,7 +52,11 @@ public class Anagram {
     	        BufferedReader fis = new BufferedReader(new FileReader(new File(patternsURI.getPath()).getName()));
     	        String pattern;
     	        while ((pattern = fis.readLine()) != null) {
-    	          patternsToSkip.add(pattern);
+    	        	String[] arr = pattern.split(",");
+    	        	for (int i =0 ;i< arr.length; i++) {
+    	        		patternsToSkip.add(arr[i]);
+    	        	}
+        			
     	        }
     	      } catch (IOException ioe) {
     	        System.err.println("Caught exception while parsing the cached file '"
@@ -90,8 +94,13 @@ public class Anagram {
                     anagram = anagram + ',' + val.toString();
                 }
             }
-            anagram = "[" + anagram + "]";
-            context.write(key, new Text(anagram));
+            HashSet<String> test=new HashSet<String>(Arrays.asList(anagram.split(",")));
+            int size = test.size();
+            if(size > 1) {
+            	String s = test.toString();
+                context.write(key, new Text(s));
+            }
+            
         }
     }
 
