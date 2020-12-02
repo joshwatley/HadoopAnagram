@@ -91,7 +91,7 @@ public class Anagram {
     
 
     public static class Reducer extends Reducer<Text, Text, Text, Text> {
-        
+
         public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException { // the reduce function
             String anagram = null;
 
@@ -145,3 +145,4 @@ public class Anagram {
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
+}
