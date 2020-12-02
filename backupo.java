@@ -25,7 +25,7 @@ public class Anagram {
 
     static Collection<Text> anagrams = new HashSet<Text>();
 
-    public static class Mapper extends Mapper<Object, Text, Text, Text> { 
+    public static class AMapper extends Mapper<Object, Text, Text, Text> { 
         // this is the class for mapping the data from its original format into its anagram key pair
     
         private String input;
@@ -83,13 +83,13 @@ public class Anagram {
                     String anagramKey = new String(arr);
                     context.write(new Text(anagramKey), new Text(word)); // complete the mapping of anagram key to the word
                 }
-                
+
             }
         }
     }
     
 
-    public static class Reducer extends Reducer<Text, Text, Text, Text> {
+    public static class AReducer extends Reducer<Text, Text, Text, Text> {
 
         public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException { // the reduce function
             String anagram = null;
@@ -136,8 +136,8 @@ public class Anagram {
 
         // configuration setup
         job.setJarByClass(Anagram.class);
-        job.setMapperClass(Mapper.class);
-        job.setReducerClass(Reducer.class);
+        job.setMapperClass(AMapper.class);
+        job.setReducerClass(AReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
         FileInputFormat.addInputPath(job, new Path(args[0]));
