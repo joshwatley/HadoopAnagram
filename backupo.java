@@ -85,17 +85,16 @@ public class Anagram {
                 }
             
                 }
-            }
+            
         }
     }
     
 
     public static class Reducer extends Reducer<Text, Text, Text, Text> {
-
-        private String anagram = null;
-
+        
         public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException { // the reduce function
-            
+            String anagram = null;
+
             for (Text mapped : values) {
                 if (anagram == null) {
                     anagram = mapped.toString();
