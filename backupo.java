@@ -83,9 +83,8 @@ public class Anagram {
                     String anagramKey = new String(arr);
                     context.write(new Text(anagramKey), new Text(word)); // complete the mapping of anagram key to the word
                 }
-            
-                }
-            
+                
+            }
         }
     }
     
