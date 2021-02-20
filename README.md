@@ -1,12 +1,25 @@
 # HadoopAnagram
 
-Program in java looking into google cloud computing and hadoop.
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
 
-An anagram solver, which takes a dataset (ie, 10,000 ebooks), and will return any anagrams it has found. 
+## General info
+This project is an anagram solver in java which takes a large data set - in my example 10000 ebooks, and returns a list of anagrams.
+	
+## Technologies
+Project is created with:
+* Java
+* Hadoop
+* Google Cloud Console
+	
+## Setup
+To run this project, install it locally:
 
+Once compiled in virtual machine.
 
-Usage:
-
-Once compiled.
-
+```
 hadoop /bin/hadoop Anagram.jar input_directory output_directory -- skip file_for_skip_word_list
+
+```
